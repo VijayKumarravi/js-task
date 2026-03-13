@@ -724,315 +724,421 @@
 
 // console.clear();
 
-console.log("1. FUNCTIONS");
- 
-//1
-function greetUser(name){
-console.log("Welcome to Stackly, " + name);
-}
-greetUser("Vijay");
- 
-//2
-function calculateSalary(basic, bonus){
-return basic + bonus;
-}
-console.log("Total Salary:", calculateSalary(50000,6000));
- 
-//3
-function checkEvenOdd(num){
-if(num % 2 === 0){
-return "Even";
-}else{
-return "Odd";
-}
-}
-console.log(checkEvenOdd(7));
- 
-//4
-function findMax(a,b,c){
-return Math.max(a,b,c);
-}
-console.log("Largest:", findMax(10,25,15));
- 
-//5
-function calculateGST(price){
-return price + (price * 0.18);
-}
-console.log("Price with GST:", calculateGST(1000));
- 
-//6
-function login(username,password){
-if(username === "admin" && password === "1234"){
-console.log("Login Successful");
-}else{
-console.log("Invalid Login");
-}
-}
-login("admin","1234");
- 
- 
-console.log("2. DEFAULT PARAMETERS");
- 
-//7
-function createEmployee(name, role="Trainee"){
-console.log("Name:",name,"Role:",role);
-}
-createEmployee("vijay");
- 
-//8
-function calculateDiscount(price, discount=10){
-let finalPrice = price - (price*discount/100);
-console.log("Final Price:",finalPrice);
-}
-calculateDiscount(1000);
- 
-//9
-function orderFood(item, quantity=1){
-console.log("Order:",item,"Quantity:",quantity);
-}
-orderFood("Burger");
- 
- 
-console.log("3. SCOPE");
- 
-//10
-let company = "Stackly";
-function showCompany(){
-console.log(company);
-}
-showCompany();
- 
-//11
-if(true){
-var a = 10;
-let b = 20;
-const c = 30;
-console.log(a,b,c);
-}
-console.log("var accessible:",a);
- 
-//12
-function testScope(){
-let message="Inside Function";
-console.log(message);
-}
-testScope();
- 
- 
-console.log("4. HOISTING");
- 
-//13
-console.log(x);
-var x = 5;
- 
-//14
-//console.log(y); // Uncomment to see error
-let y = 10;
- 
-//15
-sayHello();
-function sayHello(){
-console.log("Hello from hoisted function");
-}
- 
- 
-console.log("5. FUNCTION TYPES");
- 
-//16
-function namedExample(){
-console.log("Named Function Example");
-}
-namedExample();
- 
-//17
-let multiply = function(a,b){
-return a*b;
-}
-console.log("Multiply:", multiply(5,4));
- 
-//18
-let square = (n)=> n*n;
-console.log("Square:", square(6));
- 
- 
-console.log("6. CALLBACK FUNCTIONS");
- 
-//19
-function processData(callback){
-console.log("Processing Data...");
-callback();
-}
-function done(){
-console.log("Callback executed");
-}
-processData(done);
- 
-//20
-function calculate(a,b,operation){
-return operation(a,b);
-}
-function add(x,y){ return x+y; }
-function sub(x,y){ return x-y; }
- 
-console.log("Add:", calculate(10,5,add));
-console.log("Sub:", calculate(10,5,sub));
- 
-//21
-function completeTask(){
-console.log("Task Completed");
-}
-function doWork(cb){
-console.log("Working...");
-cb();
-}
-doWork(completeTask);
- 
-//22
-function showUser(callback){
-let user = {name:"Naveen", role:"Developer"};
-callback(user);
-}
-showUser(function(data){
-console.log(data);
-});
- 
- 
-console.log("7. CURRYING");
- 
-//23
-function addCurried(a){
-return function(b){
-return function(c){
-return a+b+c;
-}
-}
-}
-console.log(addCurried(1)(2)(3));
- 
-//24
-let multiplyCurried = a => b => c => a*b*c;
-console.log(multiplyCurried(2)(3)(4));
- 
- 
-console.log("8. IIFE");
- 
-//25
-(function(){
-console.log("Website Loaded");
-})();
- 
-//26
-(function(price){
-let discount = price*0.1;
-console.log("Discount Price:", price-discount);
-})(1000);
- 
- 
-console.log("9. GENERATOR FUNCTIONS");
- 
-//27
-function* coupons(){
-yield "DISC10";
-yield "DISC20";
-yield "DISC30";
-}
-let c = coupons();
-console.log(c.next().value);
-console.log(c.next().value);
-console.log(c.next().value);
- 
-//28
-function* motivation(){
-yield "Keep Coding!";
-yield "Practice Daily!";
-yield "Never Give Up!";
-}
-let m = motivation();
-console.log(m.next().value);
-console.log(m.next().value);
-console.log(m.next().value);
- 
- 
-console.log("10. SPREAD OPERATOR");
- 
-//29
-let arr1=[1,2,3];
-let arr2=[4,5,6];
-let merged=[...arr1,...arr2];
-console.log(merged);
- 
-//30
-let arr3=[10,20,30];
-let clone=[...arr3];
-console.log(clone);
- 
-//31
-let obj1={name:"John"};
-let obj2={role:"Developer"};
-let objMerge={...obj1,...obj2};
-console.log(objMerge);
- 
- 
-console.log("11. REST OPERATOR");
- 
-//32
-function sumAll(...numbers){
-return numbers.reduce((a,b)=>a+b);
-}
-console.log(sumAll(1,2,3,4));
- 
-//33
-function firstRest(first,...rest){
-console.log("First:",first);
-console.log("Rest:",rest);
-}
-firstRest(1,2,3,4);
- 
-//34
-function totalBill(...prices){
-return prices.reduce((a,b)=>a+b);
-}
-console.log("Total Bill:", totalBill(100,200,300));
- 
- 
-console.log("12. DESTRUCTURING");
- 
-//35
-let [a1,a2,a3,a4]=[10,20,30,40];
-console.log(a1,a2,a3,a4);
- 
-//36
-let {name,role,salary} = {name:"Naveen", role:"Developer", salary:40000};
-console.log(name,role,salary);
- 
-//37
-let arr=[5,6,7,8];
-let [first,,,last]=arr;
-console.log(first,last);
- 
-//38
-let [x1,x2,[x3,x4]]=[1,2,[3,4]];
-console.log(x3,x4);
- 
- 
-console.log("13. ARRAY MANIPULATION");
- 
-//39
-let nums=[1,2,3,4,5];
-nums.push(6);
-console.log(nums);
-nums.pop();
-console.log(nums);
-nums.shift();
-console.log(nums);
-nums.unshift(0);
-console.log(nums);
- 
-//40
-let numbers=[1,2,3,40,50,6];
-numbers.splice(3,2,4,5);
-console.log(numbers);
+// console.log("1. FUNCTIONS");
+ 
+// //1
+// function greetUser(name){
+// console.log("Welcome to Stackly, " + name);
+// }
+// greetUser("Vijay");
+ 
+// //2
+// function calculateSalary(basic, bonus){
+// return basic + bonus;
+// }
+// console.log("Total Salary:", calculateSalary(50000,6000));
+ 
+// //3
+// function checkEvenOdd(num){
+// if(num % 2 === 0){
+// return "Even";
+// }else{
+// return "Odd";
+// }
+// }
+// console.log(checkEvenOdd(7));
+ 
+// //4
+// function findMax(a,b,c){
+// return Math.max(a,b,c);
+// }
+// console.log("Largest:", findMax(10,25,15));
+ 
+// //5
+// function calculateGST(price){
+// return price + (price * 0.18);
+// }
+// console.log("Price with GST:", calculateGST(1000));
+ 
+// //6
+// function login(username,password){
+// if(username === "admin" && password === "1234"){
+// console.log("Login Successful");
+// }else{
+// console.log("Invalid Login");
+// }
+// }
+// login("admin","1234");
+ 
+ 
+// console.log("2. DEFAULT PARAMETERS");
+ 
+// //7
+// function createEmployee(name, role="Trainee"){
+// console.log("Name:",name,"Role:",role);
+// }
+// createEmployee("vijay");
+ 
+// //8
+// function calculateDiscount(price, discount=10){
+// let finalPrice = price - (price*discount/100);
+// console.log("Final Price:",finalPrice);
+// }
+// calculateDiscount(1000);
+ 
+// //9
+// function orderFood(item, quantity=1){
+// console.log("Order:",item,"Quantity:",quantity);
+// }
+// orderFood("Burger");
+ 
+ 
+// console.log("3. SCOPE");
+ 
+// //10
+// let company = "Stackly";
+// function showCompany(){
+// console.log(company);
+// }
+// showCompany();
+ 
+// //11
+// if(true){
+// var a = 10;
+// let b = 20;
+// const c = 30;
+// console.log(a,b,c);
+// }
+// console.log("var accessible:",a);
+ 
+// //12
+// function testScope(){
+// let message="Inside Function";
+// console.log(message);
+// }
+// testScope();
+ 
+ 
+// console.log("4. HOISTING");
+ 
+// //13
+// console.log(x);
+// var x = 5;
+ 
+// //14
+// //console.log(y); // Uncomment to see error
+// let y = 10;
+ 
+// //15
+// sayHello();
+// function sayHello(){
+// console.log("Hello from hoisted function");
+// }
+ 
+ 
+// console.log("5. FUNCTION TYPES");
+ 
+// //16
+// function namedExample(){
+// console.log("Named Function Example");
+// }
+// namedExample();
+ 
+// //17
+// let multiply = function(a,b){
+// return a*b;
+// }
+// console.log("Multiply:", multiply(5,4));
+ 
+// //18
+// let square = (n)=> n*n;
+// console.log("Square:", square(6));
+ 
+ 
+// console.log("6. CALLBACK FUNCTIONS");
+ 
+// //19
+// function processData(callback){
+// console.log("Processing Data...");
+// callback();
+// }
+// function done(){
+// console.log("Callback executed");
+// }
+// processData(done);
+ 
+// //20
+// function calculate(a,b,operation){
+// return operation(a,b);
+// }
+// function add(x,y){ return x+y; }
+// function sub(x,y){ return x-y; }
+ 
+// console.log("Add:", calculate(10,5,add));
+// console.log("Sub:", calculate(10,5,sub));
+ 
+// //21
+// function completeTask(){
+// console.log("Task Completed");
+// }
+// function doWork(cb){
+// console.log("Working...");
+// cb();
+// }
+// doWork(completeTask);
+ 
+// //22
+// function showUser(callback){
+// let user = {name:"Naveen", role:"Developer"};
+// callback(user);
+// }
+// showUser(function(data){
+// console.log(data);
+// });
+ 
+ 
+// console.log("7. CURRYING");
+ 
+// //23
+// function addCurried(a){
+// return function(b){
+// return function(c){
+// return a+b+c;
+// }
+// }
+// }
+// console.log(addCurried(1)(2)(3));
+ 
+// //24
+// let multiplyCurried = a => b => c => a*b*c;
+// console.log(multiplyCurried(2)(3)(4));
+ 
+ 
+// console.log("8. IIFE");
+ 
+// //25
+// (function(){
+// console.log("Website Loaded");
+// })();
+ 
+// //26
+// (function(price){
+// let discount = price*0.1;
+// console.log("Discount Price:", price-discount);
+// })(1000);
+ 
+ 
+// console.log("9. GENERATOR FUNCTIONS");
+ 
+// //27
+// function* coupons(){
+// yield "DISC10";
+// yield "DISC20";
+// yield "DISC30";
+// }
+// let c = coupons();
+// console.log(c.next().value);
+// console.log(c.next().value);
+// console.log(c.next().value);
+ 
+// //28
+// function* motivation(){
+// yield "Keep Coding!";
+// yield "Practice Daily!";
+// yield "Never Give Up!";
+// }
+// let m = motivation();
+// console.log(m.next().value);
+// console.log(m.next().value);
+// console.log(m.next().value);
+ 
+ 
+// console.log("10. SPREAD OPERATOR");
+ 
+// //29
+// let arr1=[1,2,3];
+// let arr2=[4,5,6];
+// let merged=[...arr1,...arr2];
+// console.log(merged);
+ 
+// //30
+// let arr3=[10,20,30];
+// let clone=[...arr3];
+// console.log(clone);
+ 
+// //31
+// let obj1={name:"John"};
+// let obj2={role:"Developer"};
+// let objMerge={...obj1,...obj2};
+// console.log(objMerge);
+ 
+ 
+// console.log("11. REST OPERATOR");
+ 
+// //32
+// function sumAll(...numbers){
+// return numbers.reduce((a,b)=>a+b);
+// }
+// console.log(sumAll(1,2,3,4));
+ 
+// //33
+// function firstRest(first,...rest){
+// console.log("First:",first);
+// console.log("Rest:",rest);
+// }
+// firstRest(1,2,3,4);
+ 
+// //34
+// function totalBill(...prices){
+// return prices.reduce((a,b)=>a+b);
+// }
+// console.log("Total Bill:", totalBill(100,200,300));
+ 
+ 
+// console.log("12. DESTRUCTURING");
+ 
+// //35
+// let [a1,a2,a3,a4]=[10,20,30,40];
+// console.log(a1,a2,a3,a4);
+ 
+// //36
+// let {name,role,salary} = {name:"Naveen", role:"Developer", salary:40000};
+// console.log(name,role,salary);
+ 
+// //37
+// let arr=[5,6,7,8];
+// let [first,,,last]=arr;
+// console.log(first,last);
+ 
+// //38
+// let [x1,x2,[x3,x4]]=[1,2,[3,4]];
+// console.log(x3,x4);
+ 
+ 
+// console.log("13. ARRAY MANIPULATION");
+ 
+// //39
+// let nums=[1,2,3,4,5];
+// nums.push(6);
+// console.log(nums);
+// nums.pop();
+// console.log(nums);
+// nums.shift();
+// console.log(nums);
+// nums.unshift(0);
+// console.log(nums);
+ 
+// //40
+// let numbers=[1,2,3,40,50,6];
+// numbers.splice(3,2,4,5);
+// console.log(numbers);
 
+
+//  1️ Employee Salary Analysis System
+
+let employees = [
+ {name:"vijay", salary:25000},
+ {name:"kumar", salary:60000},
+ {name:"shantha", salary:45000},
+ {name:"viji", salary:80000},
+ {name:"mona", salary:30000}
+]
+
+// Salary > 40000
+let highSalary = employees.filter(emp => emp.salary > 40000)
+console.log("Employees salary > 40000:", highSalary)
+
+// First salary > 70000
+let firstHigh = employees.find(emp => emp.salary > 70000)
+console.log("First employee salary > 70000:", firstHigh)
+
+// Total salary
+let total = employees.reduce((sum, emp) => sum + emp.salary, 0)
+console.log("Total Salary:", total)
+
+// Any salary below 20000
+let below20 = employees.some(emp => emp.salary < 20000)
+console.log("Any salary below 20000:", below20)
+
+// All salary above 20000
+let above20 = employees.every(emp => emp.salary > 20000)
+console.log("All salary above 20000:", above20)
+// 2️ E-commerce Product Search
+let products = ["laptop","mobile","tablet","smartwatch","mobile"]
+
+console.log("Tablet exists:", products.includes("tablet"))
+
+console.log("First index of mobile:", products.indexOf("mobile"))
+
+console.log("Last index of mobile:", products.lastIndexOf("mobile"))
+
+console.log("Camera exists:", products.includes("camera"))
+// 3️ Website Username Formatter
+let username = "   vijaykumar   "
+
+let clean = username.trim()
+console.log("After trim:", clean)
+
+console.log("Uppercase:", clean.toUpperCase())
+
+console.log("Lowercase:", clean.toLowerCase())
+
+console.log("First 6 characters:", clean.slice(0,6))
+// 4️ Game Platform Data Processing
+let games = ["cricket","football","hockey","tennis"]
+
+games.forEach(game => {
+ console.log("Game:", game)
+})
+
+let newGames = games.map(game => "Game : " + game)
+
+console.log("New Array:", newGames)
+// 5️ Student Marks Analyzer
+let marks = [45,90,23,67,88,12]
+
+let asc = [...marks].sort((a,b)=>a-b)
+console.log("Ascending:", asc)
+
+let desc = [...marks].sort((a,b)=>b-a)
+console.log("Descending:", desc)
+
+let rev = [...marks].reverse()
+console.log("Reversed:", rev)
+// 6️ Salary Report Generator
+let salaries = [10000,20000,30000,40000]
+
+let totalSalary = salaries.reduce((sum,val)=>sum+val,0)
+console.log("Total Salary:", totalSalary)
+
+let avg = totalSalary / salaries.length
+console.log("Average Salary:", avg)
+// 7️ URL Processor
+let url = "www-stackly-com"
+
+let arr = url.split("-")
+
+console.log("Split URL:", arr)
+// 8️ Job Role Modifier
+let role = "python developer"
+
+console.log("Replace:", role.replace("python","javascript"))
+
+console.log("Starts with python:", role.startsWith("python"))
+
+console.log("Ends with developer:", role.endsWith("developer"))
+// 9 Nested Array Data Cleanup
+let data = [1,2,[3,4,[5,6]]]
+
+let flatData = data.flat(2)
+
+console.log("Flattened Array:", flatData)
+// 10 Sports Data Slice
+let sports = ["cricket","football","tennis","hockey","golf"]
+
+console.log("Football and Tennis:", sports.slice(1,3))
+
+console.log("First 3 sports:", sports.slice(0,3))
 
 
  </script>
